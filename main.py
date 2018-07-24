@@ -58,6 +58,22 @@ def getQuestions():
 def postQuestions():
     pass
 
+@app.route('/mobile/fetch_symptoms_Pincode',methods = ['POST'])
+def fetchSymptomsForPincode():
+    return jsonify(MobileService.fetchSymptomsForPincode(required_param("Pincode")))
+
+@app.route('/mobile/fetch_symptoms_User',methods = ['POST'])
+def fetchSymptomsForUser():
+    return jsonify(MobileService.fetchSymptomsForUser(required_param("firstName"),required_param("lastName")))
+
+@app.route('/mobile/fetch_symptoms_College',methods = ['POST'])
+def fetchSymptomsForCollege():
+    return jsonify(MobileService.fetchSymptomsForCollege(required_param("college")))
+
+@app.route('/mobile/fetch_symptoms_College',methods = ['POST'])
+def storeDoctorsVerdict():
+    return jsonify(MobileService.storeDoctorsVerdict(required_param("label"),required_param("firstName"),required_param("lastName")))
+
 def dump(obj):
   for attr in dir(obj):
     print("obj.%s = %r" % (attr, getattr(obj, attr)))
